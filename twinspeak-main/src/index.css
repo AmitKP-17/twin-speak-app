@@ -1,0 +1,118 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Pure Black */
+    --foreground: 0 0% 100%; /* Pure White */
+    
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 180 100% 50%; /* Neon Teal */
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 180 100% 45%;
+    --secondary-foreground: 0 0% 0%;
+    
+    --muted: 210 40% 10%;
+    --muted-foreground: 0 0% 70%;
+    
+    --accent: 180 100% 40%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 215 25% 15%;
+    --input: 215 25% 15%;
+    --ring: 180 100% 50%;
+    
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-color: #000000;
+  }
+}
+
+@layer utilities {
+  .neon-glow {
+    text-shadow: 0 0 5px theme('colors.primary.DEFAULT'), 
+                 0 0 20px theme('colors.primary.DEFAULT');
+  }
+  
+  .neon-box {
+    box-shadow: 0 0 5px theme('colors.primary.DEFAULT'),
+                0 0 15px theme('colors.primary.DEFAULT');
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .glassmorphism {
+    @apply bg-opacity-10 backdrop-blur-lg bg-white border border-white/10;
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Font families */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-fira {
+  font-family: 'Fira Code', monospace;
+}
+
+/* Progress bar styling */
+.progress-bar {
+  @apply h-2 rounded-full overflow-hidden bg-muted;
+}
+
+.progress-bar-fill {
+  @apply h-full bg-primary;
+  transition: width 0.3s ease;
+}
